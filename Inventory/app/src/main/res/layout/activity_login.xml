@@ -20,11 +20,10 @@
         android:id="@+id/edtxtName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:hint="UserName"
-        android:singleLine="false"
+        android:hint="@string/login_hint"
         android:selectAllOnFocus="false"
         android:textAlignment="center"
-        android:text="stas.savinov" />
+        android:text="@string/login" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -36,20 +35,19 @@
         android:layout_marginTop="28dp"
         android:id="@+id/edtxtPassword"
         android:textAlignment="center"
-        android:hint="Password"
-        android:text="123456" />
+        android:hint="@string/password" />
 
     <Button
-        android:text="Logging"
+        android:text="@string/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:id="@+id/btnLogging"
         android:layout_below="@+id/edtxtPassword"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
     <CheckBox
-        android:text="Remember me?"
+        android:text="@string/remember_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtxtPassword"

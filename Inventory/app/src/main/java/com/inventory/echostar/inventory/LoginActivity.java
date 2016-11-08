@@ -2,6 +2,7 @@ package com.inventory.echostar.inventory;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
@@ -28,8 +29,19 @@ import database_manager.UserCredentials;
 public class LoginActivity extends AppCompatActivity
 {
 
+    private SharedPreferences        settings    = null;
+    private SharedPreferences.Editor prefsEditor = null;
+
+    private final String PreferenceName = "EchostarInventory";
+    private final String LogingString = "Login";
+    private final String PasswordString = "Password";
+    private final String RememberString = "RememberMe";
+    private final String LOG = "Login Activity";
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -37,6 +49,43 @@ public class LoginActivity extends AppCompatActivity
         final EditText edtTxtPassword = (EditText) findViewById(R.id.edtxtPassword);
         final CheckBox chkbxRememberMe = (CheckBox) findViewById(R.id.chBxRememberMe);
         final Button btnLogging = (Button) findViewById(R.id.btnLogging);
+
+        settings = getSharedPreferences(PreferenceName, 0);
+        prefsEditor = settings.edit();
+
+        Log.i(LOG,"onCreate - Start");
+        if(null != settings)
+        {
+            chkbxRememberMe.setChecked(settings.getBoolean(RememberString, false));
+            if (chkbxRememberMe.isChecked())
+            {
+                edtTxtUserName.setText(settings.getString(LogingString,"None"));
+                edtTxtPassword.setText(settings.getString(PasswordString,""));
+            }
+        }
+
+        chkbxRememberMe.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (chkbxRememberMe.isChecked())
+                {
+                    prefsEditor.putBoolean(RememberString, true);
+                    prefsEditor.putString(LogingString,edtTxtUserName.getText().toString());
+                    prefsEditor.putString(PasswordString,edtTxtPassword.getText().toString());
+                    prefsEditor.commit();
+//                    Log.i(LOG,"\n Settings get data User: " + settings.getString(LogingString,"None") +
+//                            " Pwd: " + settings.getString(PasswordString,""));
+                }
+                else
+                {
+                    prefsEditor.clear();
+                    prefsEditor.commit();
+                }
+            }
+        });
+
 
         btnLogging.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +111,27 @@ public class LoginActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    /**
+     * onPause - Override method
+     */
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        final EditText edtTxtUserName = (EditText) findViewById(R.id.edtxtName);
+        final EditText edtTxtPassword = (EditText) findViewById(R.id.edtxtPassword);
+        final CheckBox chkbxRememberMe = (CheckBox) findViewById(R.id.chBxRememberMe);
+        if (chkbxRememberMe.isChecked())
+        {
+            prefsEditor.putString(LogingString,edtTxtUserName.getText().toString());
+            prefsEditor.putString(PasswordString,edtTxtPassword.getText().toString());
+            prefsEditor.commit();
+            Log.i(LOG,"\n onPause get data User: " + settings.getString(LogingString,"None") +
+                    " Pwd: " + settings.getString(PasswordString,""));
+        }
     }
 
     /**

@@ -1,6 +1,7 @@
 package items;
 
-import android.icu.text.DateFormat;
+//import android.icu.text.DateFormat;
+import java.util.Date;
 
 /**
  * Created by saturn on 07.11.2016.
@@ -8,7 +9,7 @@ import android.icu.text.DateFormat;
 
 public class ItemsHolder implements SimpleObjectItem
 {
-
+    //No additional fields
 }
 
 class DebugTool implements SimpleObjectItem
@@ -49,7 +50,7 @@ class StorageDrive  implements SimpleObjectItem
 class TestEquipment  implements SimpleObjectItem
 {
     String type = null;
-    DateFormat calibrationDate = null;
+    Date calibrationDate = null;
 }
 
 class Cable  implements SimpleObjectItem
