@@ -7,120 +7,119 @@ import java.util.Date;
  * Created by saturn on 07.11.2016.
  */
 
-public class ItemsHolder implements SimpleObjectItem
+public class ItemsHolder extends SimpleObjectItem
+{
+    //No additional fields
+}
+class DebugTool extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class DebugTool implements SimpleObjectItem
+class TV  extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class TV  implements SimpleObjectItem
-{
-    //No additional fields
-}
-
-class STB  implements SimpleObjectItem
+class STB  extends SimpleObjectItem
 {
     String ReceiverCAID     = null;
     String Secure           = null;
     String serviceProvider  = null;
 }
 
-class RCU implements SimpleObjectItem
+class RCU extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class Smartcard  implements SimpleObjectItem
+class Smartcard  extends SimpleObjectItem
 {
     String serialNumber = null;
     String serviceProvider = null;
 }
 
-class StorageDrive  implements SimpleObjectItem
+class StorageDrive  extends SimpleObjectItem
 {
     String storageType = null; // “External HDD”, “Internal HDD”, “Flash drive” and “Mobile rack” values
     long capacity = 0;
     String interfaces = null; //“USB”, “mini-USB”, “eSATA”, “SATA” and “IDE” values
 }
 
-class TestEquipment  implements SimpleObjectItem
+class TestEquipment  extends SimpleObjectItem
 {
     String type = null;
     Date calibrationDate = null;
 }
 
-class Cable  implements SimpleObjectItem
+class Cable  extends SimpleObjectItem
 {
    String title = null;
    double length = 0.0;
 }
 
-class Adapter implements SimpleObjectItem
+class Adapter extends SimpleObjectItem
 {
     String title = null;
 }
 
-class VideoCaptureCard implements SimpleObjectItem
+class VideoCaptureCard extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class SAGE implements SimpleObjectItem
+class SAGE extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class TransformerStepDown implements SimpleObjectItem
+class TransformerStepDown extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class TransformerIsolation implements SimpleObjectItem
+class TransformerIsolation extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class NetworkEquipment implements SimpleObjectItem
+class NetworkEquipment extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class FrontPanel implements SimpleObjectItem
+class FrontPanel extends SimpleObjectItem
 {
     //No additional fields
     String title = null;
 }
 
-class Headphones implements SimpleObjectItem
+class Headphones extends SimpleObjectItem
 {
     boolean hasMicrophone = false;
 }
 
-class IRReceiver implements SimpleObjectItem
+class IRReceiver extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class CD implements SimpleObjectItem
+class CD extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class Microphone implements SimpleObjectItem
+class Microphone extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class StreamingEquipment implements SimpleObjectItem
+class StreamingEquipment extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class PSU implements SimpleObjectItem
+class PSU extends SimpleObjectItem
 {
     String title = null;
     String socketType = null; //“UK, “US” and “Europe”
@@ -128,27 +127,27 @@ class PSU implements SimpleObjectItem
     int outputCurrent = 0;
 }
 
-class RedRat implements SimpleObjectItem
+class RedRat extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class USBhub implements SimpleObjectItem
+class USBhub extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class SMARTBox implements SimpleObjectItem
+class SMARTBox extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class SmartcardReader implements SimpleObjectItem
+class SmartcardReader extends SimpleObjectItem
 {
     //No additional fields
 }
 
-class WebCamera implements SimpleObjectItem
+class WebCamera extends SimpleObjectItem
 {
     //No additional fields
 }

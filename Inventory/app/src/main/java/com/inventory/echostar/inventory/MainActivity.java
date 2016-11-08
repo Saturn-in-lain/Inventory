@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
 
         ZxingScanButton = (Button) findViewById(R.id.btnZxingScan);
         ZBarScanButton = (Button) findViewById(R.id.btnZbarScan);
-        SearchButton = (Button) findViewById(R.id.btnSearch);
+        SearchButton = (Button) findViewById(R.id.btnSearchInDatabase);
 
         ZxingScanButton.setOnClickListener(new View.OnClickListener() {
             @Override

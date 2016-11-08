@@ -31,7 +31,7 @@
         android:text="Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSearch"
+        android:id="@+id/btnSearchInDatabase"
         android:layout_above="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/btnSearch"
+        android:layout_toStartOf="@+id/btnSearchInDatabase"
         android:layout_marginEnd="15dp"
         android:id="@+id/btnZxingScan" />
 
@@ -51,5 +51,5 @@
         android:layout_marginStart="20dp"
         android:id="@+id/btnZbarScan"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/btnSearch" />
+        android:layout_toEndOf="@+id/btnSearchInDatabase" />
 </RelativeLayout>
