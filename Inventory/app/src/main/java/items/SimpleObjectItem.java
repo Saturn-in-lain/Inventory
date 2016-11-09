@@ -1,6 +1,8 @@
 package items;
 
 //import android.icu.text.DateFormat;
+import android.util.Log;
+
 import java.util.BitSet;
 import java.util.Date;
 
@@ -10,17 +12,17 @@ import java.util.Date;
 
 public class SimpleObjectItem
 {
-    public String model                     = null;
-    public String manufacturer              = null;
-    public String creator                   = null;
-    public String version                   = null;
-    public String   modificationDate          = null;
-    public String owner                     = null;
-    public String serialNumber              = null;
+    public String model                   = null;
+    public String manufacturer            = null;
+    public String creator                 = null;
+    public String version                 = null;
+    public String modificationDate        = null;
+    public String owner                   = null;
+    public String serialNumber            = null;
     public String barcode                 = null;
     public String location                = null;
-    public String state                   = null;             //Dropdown box with “Normal”, “Broken” and “Lost” values
-    public String   guaranteeExpiration     = null;
+    public String state                   = null;
+    public String guaranteeExpiration     = null;
     public String office                  = "Kharkov";
     public String accountingInventoryCode = null;
     public String comments                = null;
@@ -58,12 +60,12 @@ public class SimpleObjectItem
         }
     }
 
-    public void initializeData(String mod, String manufacturer, String creator, String version,
+    public void initializeData(String model, String manufacturer, String creator, String version,
                                String modificationDate, String owner, String serialNumber,
-                          String barcode, String location, String state, String guaranteeExpiration,
-                          String office, String accountingInventoryCode, String comments)
+                               String barcode, String location, String state, String guaranteeExpiration,
+                               String office, String accountingInventoryCode, String comments)
     {
-        this.model        = mod;
+        this.model        = model;
         this.manufacturer = manufacturer;
         this.creator      = creator;
         this.version      = version;
@@ -71,12 +73,12 @@ public class SimpleObjectItem
         this.owner        = owner;
         this.serialNumber = serialNumber;
         this.barcode      = barcode;
-        this.location     = location;
-        this.state        = STATE_TYPE_STRUCTURE.NORMAL.getParameterString();   //TODO HARDCODE
-        this.guaranteeExpiration = guaranteeExpiration;
-        this.office       = "Kharkov";                                          //TODO HARDCODE
+        this.location                = location;
+        this.state                   = STATE_TYPE_STRUCTURE.NORMAL.getParameterString();                //TODO HARDCODE
+        this.guaranteeExpiration     = guaranteeExpiration;
+        this.office                  = "Kharkov";                                                       //TODO HARDCODE
         this.accountingInventoryCode = accountingInventoryCode;
-        this.comments     = comments;
+        this.comments                = comments;
     }
 
     public String toString()
@@ -92,7 +94,7 @@ public class SimpleObjectItem
                     "Barcode: "                 + barcode               +"\n"+
                     "Location: "                + location              +"\n"+
                     "State: "                   + state                 +"\n"+
-                    "QuaranteeExpiration: "     + guaranteeExpiration   +"\n"+
+                    "GuaranteeExpiration: "     + guaranteeExpiration   +"\n"+
                     "Office: "                  + office                +"\n"+
                     "AccountingInventoryCode: " + accountingInventoryCode+"\n"+
                     "Comments: "                + comments              +"\n";

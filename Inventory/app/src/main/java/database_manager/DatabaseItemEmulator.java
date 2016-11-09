@@ -136,21 +136,20 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
         if (cursor.moveToFirst())
         {
             do {
-                ItemDescription item = new ItemDescription(
-                        cursor.getString(2),
-                        cursor.getString(3),
-                        cursor.getString(4),
-                        cursor.getString(5),
-                        cursor.getString(6),
-                        cursor.getString(7),
-                        cursor.getString(8),
-                        cursor.getString(9),
-                        cursor.getString(10),
-                        cursor.getString(11),
-                        cursor.getString(12),
-                        cursor.getString(13),
-                        cursor.getString(14),
-                        cursor.getString(15));
+                ItemDescription item = new ItemDescription(cursor.getString(1),
+                                                           cursor.getString(2),
+                                                           cursor.getString(3),
+                                                           cursor.getString(4),
+                                                           cursor.getString(5),
+                                                           cursor.getString(6),
+                                                           cursor.getString(7),
+                                                           cursor.getString(8),
+                                                           cursor.getString(9),
+                                                           cursor.getString(10),
+                                                           cursor.getString(11),
+                                                           cursor.getString(12),
+                                                           cursor.getString(13),
+                                                           cursor.getString(14));
                 // init fields
                 itemList.add(item);
             } while (cursor.moveToNext());
@@ -191,9 +190,6 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
                                                     "AccountingInventoryCode:2",
                                                     "Comments:2"               );
         addItem(item2);
-
-        typeAllDataBaseCredentials();
-
     }
 
     public void typeAllDataBaseCredentials()

@@ -28,11 +28,11 @@ public class SearchActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        sprItemField        = (Spinner) findViewById(R.id.sprItemField);
+
         edtxtSearchField    = (EditText) findViewById(R.id.edtxtSearchField);
         btnSearchInDatabase = (Button)findViewById(R.id.btnSearchInDatabase);
-        //##########################################################################################
 
+        //##########################################################################################
         spnrGlobalCategory = (Spinner) findViewById(R.id.sprGlobalCategory);
         spnrGlobalCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -45,7 +45,7 @@ public class SearchActivity extends AppCompatActivity
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
+        //##########################################################################################
         spnrItemsCategory = (Spinner) findViewById(R.id.sprItemCategory);
         spnrItemsCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -59,11 +59,27 @@ public class SearchActivity extends AppCompatActivity
             }
         });
         //##########################################################################################
-        addItemsOnCategory();
-        addItemsOnSubCategory(0);
+        sprItemField        = (Spinner) findViewById(R.id.sprItemField);
+        sprItemField.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
+            {
+                Object item = parent.getItemAtPosition(pos);
+                String GlobalCategory = parent.getItemAtPosition(pos).toString();
+                Log.i(LOG,"F:[sprItemField] selected item>> " + parent.getSelectedItem());
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
         //##########################################################################################
 
-        btnSearchInDatabase.setOnClickListener(new View.OnClickListener() {
+        addItemsOnCategory();
+        addItemsOnSubCategory(0);
+
+        //##########################################################################################
+
+        btnSearchInDatabase.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -96,7 +112,4 @@ public class SearchActivity extends AppCompatActivity
                 android.R.layout.simple_spinner_dropdown_item,
                 subCategory));
     }
-
-
-    //initializeDefaultDataBase()
 }

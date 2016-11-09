@@ -19,8 +19,8 @@ public class ItemDescription extends SimpleObjectItem
                                 String office, String accountingInventoryCode, String comments)
     {
 
-        initializeData(mod, manufacturer, creator, version, modificationDate,  owner,  serialNumber,
-                 barcode,  location,  state,  guaranteeExpiration, office,  accountingInventoryCode,
-                comments);
+        initializeData(mod, manufacturer,  creator,  version,  modificationDate,
+                        owner,  serialNumber,   barcode,  location,  state,  guaranteeExpiration,
+                        office,  accountingInventoryCode,   comments);
     }
 }
