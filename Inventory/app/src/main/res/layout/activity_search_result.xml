@@ -10,4 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.inventory.echostar.inventory.SearchResultActivity">
 
+    <ListView
+        android:id="@+id/lstViewFoundItems"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+
 </RelativeLayout>

@@ -26,6 +26,8 @@
     <string name="field_to_search">Select Item Field</string>
     <string name="search_field">Type searched info</string>
     <string name="search_here">Search</string>
+
+    <string name="item_found">Item description</string>
     <!-- ############################# Upper strings are checked as valid ###################### -->
 
     <string name="title_activity_scan"> ScanActivity    </string>

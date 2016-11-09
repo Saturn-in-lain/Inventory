@@ -202,4 +202,15 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
             Log.d("DatabaseItemEmulator: ", "-------------------------------------------------");
         }
     }
+
+    public List<String> getAllModelNames()
+    {
+        List<ItemDescription> items = getAllFields();
+        List<String> models = null;
+        for (ItemDescription item : items)
+        {
+            models.add(item.model);
+        }
+        return models;
+    }
 }
