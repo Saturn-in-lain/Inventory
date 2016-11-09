@@ -1,11 +1,14 @@
 package com.inventory.echostar.inventory;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -13,8 +16,11 @@ import java.util.ArrayList;
 public class SearchActivity extends AppCompatActivity
 {
     private final String LOG = "Search Activity";
-    private Spinner spnrGlobalCategory = null;
-    private Spinner spnrItemsCategory = null;
+    private Spinner spnrGlobalCategory  = null;
+    private Spinner spnrItemsCategory   = null;
+    private Spinner sprItemField        = null;
+    private EditText edtxtSearchField   = null;
+    private Button btnSearchInDatabase = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -22,6 +28,9 @@ public class SearchActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        sprItemField        = (Spinner) findViewById(R.id.sprItemField);
+        edtxtSearchField    = (EditText) findViewById(R.id.edtxtSearchField);
+        btnSearchInDatabase = (Button)findViewById(R.id.btnSearchInDatabase);
         //##########################################################################################
 
         spnrGlobalCategory = (Spinner) findViewById(R.id.sprGlobalCategory);
@@ -53,6 +62,15 @@ public class SearchActivity extends AppCompatActivity
         addItemsOnCategory();
         addItemsOnSubCategory(0);
         //##########################################################################################
+
+        btnSearchInDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
+                SearchActivity.this.startActivity(intent);
+            }
+        });
     }
 
     private void addItemsOnCategory()
@@ -79,4 +97,6 @@ public class SearchActivity extends AppCompatActivity
                 subCategory));
     }
 
+
+    //initializeDefaultDataBase()
 }

@@ -136,7 +136,21 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
         if (cursor.moveToFirst())
         {
             do {
-                ItemDescription item = new ItemDescription();
+                ItemDescription item = new ItemDescription(
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(7),
+                        cursor.getString(8),
+                        cursor.getString(9),
+                        cursor.getString(10),
+                        cursor.getString(11),
+                        cursor.getString(12),
+                        cursor.getString(13),
+                        cursor.getString(14),
+                        cursor.getString(15));
                 // init fields
                 itemList.add(item);
             } while (cursor.moveToNext());
@@ -144,22 +158,52 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
         return itemList;
     }
 
-    public void initializeDefaultDataBase()
+    public void initializeDefaultItemDataBase()
     {
         onDropTable();
-        ItemDescription item1 = new ItemDescription();
+        ItemDescription item1 = new ItemDescription("Model:1",
+                                                    "Manufacturer:1",
+                                                    "Creator:1",
+                                                    "Version:1",
+                                                    "ModificationDate:1",
+                                                    "Owner:1",
+                                                    "SerialNumber:1",
+                                                    "barcode:1",
+                                                    "Location:1",
+                                                    "State:1",
+                                                    "GuaranteeExpiration:1",
+                                                    "Office:1",
+                                                    "AccountingInventoryCode:1",
+                                                    "Comments:1"               );
         addItem(item1);
-        ItemDescription item2 = new ItemDescription();
+        ItemDescription item2 = new ItemDescription("Model:2",
+                                                    "Manufacturer:2",
+                                                    "Creator:2",
+                                                    "Version:2",
+                                                    "ModificationDate:2",
+                                                    "Owner:2",
+                                                    "SerialNumber:2",
+                                                    "barcode:2",
+                                                    "Location:2",
+                                                    "State:2",
+                                                    "GuaranteeExpiration:2",
+                                                    "Office:2",
+                                                    "AccountingInventoryCode:2",
+                                                    "Comments:2"               );
         addItem(item2);
+
+        typeAllDataBaseCredentials();
+
     }
 
     public void typeAllDataBaseCredentials()
     {
-//        List<ItemDescription> contacts = getAllCredentials();
-//        for (UserCredentials cn : contacts)
-//        {
-//            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Pwd: " + cn.getPassword();
-//            Log.d("Name: ", log);
-//        }
+        List<ItemDescription> items = getAllFields();
+        for (ItemDescription item : items)
+        {
+            Log.d("DatabaseItemEmulator: ", "-------------------------------------------------");
+            Log.d("DatabaseItemEmulator: ",                 item.toString());
+            Log.d("DatabaseItemEmulator: ", "-------------------------------------------------");
+        }
     }
 }

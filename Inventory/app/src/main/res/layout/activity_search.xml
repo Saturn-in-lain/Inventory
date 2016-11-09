@@ -81,7 +81,7 @@
         android:layout_below="@+id/textView4"
         android:layout_alignParentStart="true"
         android:layout_marginTop="17dp"
-        android:id="@+id/editText"
+        android:id="@+id/edtxtSearchField"
         android:layout_alignParentEnd="true"
         android:hint="@string/search_here" />
 
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:id="@+id/btnSearchInDatabase"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/edtxtSearchField"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -10,17 +10,17 @@ import java.util.Date;
 
 public class SimpleObjectItem
 {
-    public String model            = null;
-    public String manufacturer     = null;
-    public String creator          = null;
-    public String version          = null;
-    public Date   modificationDate = null;
-    public String owner            = null;
-    public String serialNumber     = null;
-    public String barcode          = null;
-    public String location         = null;
+    public String model                     = null;
+    public String manufacturer              = null;
+    public String creator                   = null;
+    public String version                   = null;
+    public String   modificationDate          = null;
+    public String owner                     = null;
+    public String serialNumber              = null;
+    public String barcode                 = null;
+    public String location                = null;
     public String state                   = null;             //Dropdown box with “Normal”, “Broken” and “Lost” values
-    public Date   guaranteeExpiration     = null;
+    public String   guaranteeExpiration     = null;
     public String office                  = "Kharkov";
     public String accountingInventoryCode = null;
     public String comments                = null;
@@ -59,8 +59,8 @@ public class SimpleObjectItem
     }
 
     public void initializeData(String mod, String manufacturer, String creator, String version,
-                          Date modificationDate, String owner, String serialNumber,
-                          String barcode, String location, String state, Date guaranteeExpiration,
+                               String modificationDate, String owner, String serialNumber,
+                          String barcode, String location, String state, String guaranteeExpiration,
                           String office, String accountingInventoryCode, String comments)
     {
         this.model        = mod;
@@ -72,10 +72,30 @@ public class SimpleObjectItem
         this.serialNumber = serialNumber;
         this.barcode      = barcode;
         this.location     = location;
-        this.state        = STATE_TYPE_STRUCTURE.NORMAL.getParameterString(); //TODO HARDCODE
+        this.state        = STATE_TYPE_STRUCTURE.NORMAL.getParameterString();   //TODO HARDCODE
         this.guaranteeExpiration = guaranteeExpiration;
-        this.office       = office;
+        this.office       = "Kharkov";                                          //TODO HARDCODE
         this.accountingInventoryCode = accountingInventoryCode;
         this.comments     = comments;
+    }
+
+    public String toString()
+    {
+        String retValue = null;
+        retValue = "Model: "                    + model                 +"\n"+
+                    "Manufacturer: "            + manufacturer          +"\n"+
+                    "Creator: "                 + creator               +"\n"+
+                    "Version: "                 + version               +"\n"+
+                    "ModificationDate: "        + modificationDate      +"\n"+
+                    "Owner: "                   + owner                 +"\n"+
+                    "SerialNumber: "            + serialNumber          +"\n"+
+                    "Barcode: "                 + barcode               +"\n"+
+                    "Location: "                + location              +"\n"+
+                    "State: "                   + state                 +"\n"+
+                    "QuaranteeExpiration: "     + guaranteeExpiration   +"\n"+
+                    "Office: "                  + office                +"\n"+
+                    "AccountingInventoryCode: " + accountingInventoryCode+"\n"+
+                    "Comments: "                + comments              +"\n";
+        return retValue;
     }
 }
