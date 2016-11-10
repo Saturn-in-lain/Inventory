@@ -114,7 +114,7 @@ public class SearchActivity extends AppCompatActivity
     private void addItemsOnItemFields(int position)
     {
         ItemsHolder info = new ItemsHolder();
-        spnrItemsCategory.setAdapter(new ArrayAdapter<String>(this,
+        sprItemField.setAdapter(new ArrayAdapter<String>(this,
                                                 android.R.layout.simple_spinner_dropdown_item,
                                                 info.getCommonFieldsList()));
     }

@@ -1,6 +1,8 @@
 package items;
 
 //import android.icu.text.DateFormat;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,13 +12,16 @@ import java.util.Date;
 
 public class ItemsHolder extends SimpleObjectItem
 {
-    //No additional fields
-    private ArrayList<String> subMainCategory = new ArrayList<String>();
-    private ArrayList<String> subCategory = new ArrayList<String>();
-    private ArrayList<String> commonFields = new ArrayList<String>();
+    public ArrayList<String> subMainCategory= null;
+    public ArrayList<String> subCategory    = null;
+    public ArrayList<String> commonFields   = null;
 
-    public void onCreate()
+    public ItemsHolder()
     {
+        subMainCategory = new ArrayList<String>();
+        subCategory = new ArrayList<String>();
+        commonFields = new ArrayList<String>();
+
         subMainCategory.add("Equipment");
         subMainCategory.add("Books");
 
@@ -66,11 +71,13 @@ public class ItemsHolder extends SimpleObjectItem
 
     public ArrayList<String> getBaseList()
     {
+        Log.i("getBaseList","subMainCategory:" +subMainCategory.toString());
         return subMainCategory;
     }
 
     public ArrayList<String> getSubcategoryList()
     {
+        Log.i("getBaseList","getSubcategoryList:" +subCategory.toString());
         return subCategory;
     }
 
