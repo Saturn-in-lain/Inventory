@@ -13,7 +13,7 @@ import java.util.List;
 public class DatabaseOpenHelper extends SQLiteOpenHelper
 {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "inventory";
     private static final String DICTIONARY_TABLE_NAME = "credentials";
 

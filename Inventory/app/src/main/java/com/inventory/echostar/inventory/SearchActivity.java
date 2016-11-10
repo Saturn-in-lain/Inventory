@@ -13,6 +13,8 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+import items.ItemsHolder;
+
 public class SearchActivity extends AppCompatActivity
 {
     private final String LOG = "Search Activity";
@@ -75,7 +77,7 @@ public class SearchActivity extends AppCompatActivity
 
         addItemsOnCategory();
         addItemsOnSubCategory(0);
-
+        addItemsOnItemFields(0);
         //##########################################################################################
 
         btnSearchInDatabase.setOnClickListener(new View.OnClickListener()
@@ -102,14 +104,17 @@ public class SearchActivity extends AppCompatActivity
 
     private void addItemsOnSubCategory(int position)
     {
-        ArrayList<String> subCategory = new ArrayList<String>();
-        subCategory.add("1");
-        subCategory.add("2");
-        subCategory.add("3");
-        subCategory.add("4");
+        ItemsHolder info = new ItemsHolder();
+        spnrItemsCategory.setAdapter(new ArrayAdapter<String>(this,
+                                                android.R.layout.simple_spinner_dropdown_item,
+                                                info.getSubcategoryList()));
+    }
 
+    private void addItemsOnItemFields(int position)
+    {
+        ItemsHolder info = new ItemsHolder();
         spnrItemsCategory.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item,
-                subCategory));
+                info.getCommonFieldsList()));
     }
 }

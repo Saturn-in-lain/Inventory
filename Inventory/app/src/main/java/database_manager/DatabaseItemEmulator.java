@@ -7,10 +7,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -20,7 +24,7 @@ import java.util.ListIterator;
 
 public class DatabaseItemEmulator extends SQLiteOpenHelper
 {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "inventory";
     private static final String DICTIONARY_TABLE_NAME = "inventory_items";
 
@@ -61,7 +65,7 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
                     FIELD_13 + " TEXT, " +
                     FIELD_14 + " TEXT, " +
                     FIELD_15 + " TEXT, " +
-                    FIELD_16 + " TEXT );";
+                    FIELD_16 + " BLOB );";
 
     /**
      * Constructor
@@ -99,6 +103,17 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
     }
 
     /**
+     * Check if the database exist and can be read.
+     *
+     * @return true if it exists and can be read, false if it doesn't
+     */
+    public boolean checkDataBase(Context context)
+    {
+        File dbFile = context.getDatabasePath(DATABASE_NAME);
+        return dbFile.exists();
+    }
+
+    /**
      * addContact
      * @param
      */
@@ -121,7 +136,7 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
         values.put(FIELD_13, item.office);
         values.put(FIELD_14, item.accountingInventoryCode);
         values.put(FIELD_15, item.comments);
-        values.put(FIELD_16, item.image);
+        //values.put(FIELD_16, item.image);
 
 
         db.insert(DICTIONARY_TABLE_NAME, null, values);
@@ -164,7 +179,7 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
     public void initializeDefaultItemDataBase()
     {
         onDropTable();
-        ItemDescription item1 = new ItemDescription("Model:1",
+        ItemDescription item1 = new ItemDescription("Model1",
                                                     "Manufacturer:1",
                                                     "Creator:1",
                                                     "Version:1",
@@ -179,7 +194,7 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
                                                     "AccountingInventoryCode:1",
                                                     "Comments:1"               );
         addItem(item1);
-        ItemDescription item2 = new ItemDescription("Model:2",
+        ItemDescription item2 = new ItemDescription("Model2",
                                                     "Manufacturer:2",
                                                     "Creator:2",
                                                     "Version:2",
@@ -196,6 +211,10 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
         addItem(item2);
     }
 
+    /**
+     * typeAllDataBaseCredentials
+     * @param
+     */
     public void typeAllDataBaseCredentials()
     {
         List<ItemDescription> items = getAllFields();
@@ -207,6 +226,24 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
         }
     }
 
+    //#############################################################################################
+    // Starting from here we creating stub methods to get information from database.
+    // TODO: Upgrade below if needed
+    //#############################################################################################
+
+    /**
+     * getAllDataBaseItems
+     * @param
+     */
+    public List<ItemDescription> getAllDataBaseItems()
+    {
+        return getAllFields();
+    }
+
+    /**
+     * getAllModelNames
+     * @param
+     */
     public List<String> getAllModelNames()
     {
         List<ItemDescription> items = getAllFields();
@@ -217,5 +254,58 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
             models.add(item.model);
         }
         return models;
+    }
+
+    /**
+     * getImageOfModel
+     * @param
+     */
+    public void getImageOfModel(String ModelName)
+    {
+
+    }
+
+    /**
+     * setImageOfModel
+     * @param
+     */
+    public void setImageOfModel(Bitmap imageBitmap, String ModelName)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        // Convert to byte array
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        cv.put(FIELD_16,byteArray);
+        //cv.put(FIELD_3, "Manufact");
+
+
+        db.beginTransaction();
+        try
+        {
+            try
+            {
+                //db.update(DICTIONARY_TABLE_NAME, cv, FIELD_1+"=0", null);
+
+                db.update(DICTIONARY_TABLE_NAME, cv, FIELD_2 + " = ?",
+                        new String[] { String.valueOf(ModelName) });
+                db.setTransactionSuccessful();
+            }
+            catch (Exception e)
+            {
+                Log.e("LOG","Error of SQL database call !!!!");
+                Log.e("LOG",e.toString());
+            }
+        }
+        finally
+        {
+            db.endTransaction(); // commit or rollback
+            Log.e("LOG","Transaction finished");
+        }
+        //db.close();
     }
 }

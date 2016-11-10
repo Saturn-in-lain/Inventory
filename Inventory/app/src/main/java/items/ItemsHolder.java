@@ -1,6 +1,7 @@
 package items;
 
 //import android.icu.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -10,6 +11,65 @@ import java.util.Date;
 public class ItemsHolder extends SimpleObjectItem
 {
     //No additional fields
+    final ArrayList<String> subCategory = new ArrayList<String>();
+    final ArrayList<String> commonFields = new ArrayList<String>();
+
+    public void onCreate()
+    {
+        subCategory.add("DebugTool");
+        subCategory.add("TV");
+        subCategory.add("STB");
+        subCategory.add("RCU");
+        subCategory.add("Smartcard");
+        subCategory.add("StorageDrive");
+        subCategory.add("TestEquipment");
+        subCategory.add("Cable");
+        subCategory.add("Adapter");
+        subCategory.add("VideoCaptureCard");
+        subCategory.add("SAGE");
+        subCategory.add("TransformerStepDown");
+        subCategory.add("TransformerIsolation");
+        subCategory.add("NetworkEquipment");
+        subCategory.add("FrontPanel");
+        subCategory.add("Headphones");
+        subCategory.add("IRReceiver");
+        subCategory.add("CD");
+        subCategory.add("Microphone");
+        subCategory.add("StreamingEquipment");
+        subCategory.add("PSU");
+        subCategory.add("RedRat");
+        subCategory.add("USBhub");
+        subCategory.add("SMARTBox");
+        subCategory.add("SmartcardReader");
+        subCategory.add("WebCamera");
+
+
+        commonFields.add("Model");
+        commonFields.add("Manufacturer");
+        commonFields.add("Creator");
+        commonFields.add("Version");
+        commonFields.add("ModificationDate");
+        commonFields.add("Owner");
+        commonFields.add("SerialNumber");
+        commonFields.add("Barcode");
+        commonFields.add("Location");
+        commonFields.add("State");
+        commonFields.add("GuaranteeExpiration");
+        commonFields.add("Office");
+        commonFields.add("AccountingInventoryCode");
+        commonFields.add("Comments");
+    }
+
+    public ArrayList<String> getSubcategoryList()
+    {
+        return subCategory;
+    }
+
+    public ArrayList<String> getCommonFieldsList()
+    {
+        return commonFields;
+    }
+
 }
 class DebugTool extends SimpleObjectItem
 {
@@ -41,9 +101,52 @@ class Smartcard  extends SimpleObjectItem
 
 class StorageDrive  extends SimpleObjectItem
 {
-    String storageType = null; // “External HDD”, “Internal HDD”, “Flash drive” and “Mobile rack” values
+    String storageType = HARDDRIVES.EXTERNAL.toString();
+    String interfaces = INTERFACES.USB.toString();
     long capacity = 0;
-    String interfaces = null; //“USB”, “mini-USB”, “eSATA”, “SATA” and “IDE” values
+
+    enum HARDDRIVES
+    {
+        EXTERNAL ("External HDD",0),
+        INTERNAL ("Internal HDD",1),
+        FLASH    ("Flash drive", 2),
+        MOBILE   ("Mobile rack", 3);
+
+        private String    sParameterName;
+        private int       iParameterId;
+
+        private HARDDRIVES(String toString, int id)
+        {
+            this.sParameterName = toString;
+            this.iParameterId   = id;
+        }
+        public String getParameterString()
+        {
+            return this.sParameterName;
+        }
+    }
+
+    enum INTERFACES
+    {
+        USB      ("USB",0),
+        miniUSB  ("mini-USB",1),
+        eSATA    ("eSATA", 2),
+        SATA     ("SATA", 3),
+        IDE      ("IDE", 3);
+
+        private String    sParameterName;
+        private int       iParameterId;
+
+        private INTERFACES(String toString, int id)
+        {
+            this.sParameterName = toString;
+            this.iParameterId   = id;
+        }
+        public String getParameterString()
+        {
+            return this.sParameterName;
+        }
+    }
 }
 
 class TestEquipment  extends SimpleObjectItem
@@ -122,9 +225,30 @@ class StreamingEquipment extends SimpleObjectItem
 class PSU extends SimpleObjectItem
 {
     String title = null;
-    String socketType = null; //“UK, “US” and “Europe”
+    String socketType = SOKETTYPE.ENGLISH.toString();
     int inputCurrent = 0;
     int outputCurrent = 0;
+
+    enum SOKETTYPE
+    {
+        ENGLISH  ("UK",0),
+        USA      ("US",1),
+        EUROPE   ("Europe", 2);
+
+        private String    sParameterName;
+        private int       iParameterId;
+
+        private SOKETTYPE(String toString, int id)
+        {
+            this.sParameterName = toString;
+            this.iParameterId   = id;
+        }
+        public String getParameterString()
+        {
+            return this.sParameterName;
+        }
+    }
+
 }
 
 class RedRat extends SimpleObjectItem
