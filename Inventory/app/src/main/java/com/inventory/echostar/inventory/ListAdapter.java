@@ -17,7 +17,6 @@ import java.util.List;
 //http://stackoverflow.com/questions/15832335/android-custom-row-item-for-listview
 public class ListAdapter extends BaseAdapter
 {
-
     Context context;
     List<String> data = null;
 

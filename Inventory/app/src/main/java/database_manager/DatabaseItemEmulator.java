@@ -8,10 +8,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 
 public class DatabaseItemEmulator extends SQLiteOpenHelper
@@ -206,7 +210,8 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
     public List<String> getAllModelNames()
     {
         List<ItemDescription> items = getAllFields();
-        List<String> models = null;
+        List<String> models =  new ArrayList<String>();
+
         for (ItemDescription item : items)
         {
             models.add(item.model);

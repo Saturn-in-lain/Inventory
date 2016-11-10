@@ -187,8 +187,6 @@ public class LoginActivity extends AppCompatActivity
                     {
                         Log.d("Inventory",jsonResponse.toString());
                         AlertDialogShow();
-
-                        // Here we will connect to local database in ordrer to perform tests
                     }
 
                 } catch (JSONException e) {
