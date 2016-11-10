@@ -96,10 +96,11 @@ public class SearchActivity extends AppCompatActivity
         ArrayList<String> Category = new ArrayList<String>();
         Category.add("Equipment");
         Category.add("Books");
+        ItemsHolder info = new ItemsHolder();
 
         spnrGlobalCategory.setAdapter(new ArrayAdapter<String>(this,
                                         android.R.layout.simple_spinner_dropdown_item,
-                                        Category));
+                                        info.getBaseList()));
     }
 
     private void addItemsOnSubCategory(int position)
@@ -114,7 +115,7 @@ public class SearchActivity extends AppCompatActivity
     {
         ItemsHolder info = new ItemsHolder();
         spnrItemsCategory.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_dropdown_item,
-                info.getCommonFieldsList()));
+                                                android.R.layout.simple_spinner_dropdown_item,
+                                                info.getCommonFieldsList()));
     }
 }

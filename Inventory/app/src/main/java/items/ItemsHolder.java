@@ -11,11 +11,15 @@ import java.util.Date;
 public class ItemsHolder extends SimpleObjectItem
 {
     //No additional fields
-    final ArrayList<String> subCategory = new ArrayList<String>();
-    final ArrayList<String> commonFields = new ArrayList<String>();
+    private ArrayList<String> subMainCategory = new ArrayList<String>();
+    private ArrayList<String> subCategory = new ArrayList<String>();
+    private ArrayList<String> commonFields = new ArrayList<String>();
 
     public void onCreate()
     {
+        subMainCategory.add("Equipment");
+        subMainCategory.add("Books");
+
         subCategory.add("DebugTool");
         subCategory.add("TV");
         subCategory.add("STB");
@@ -58,6 +62,11 @@ public class ItemsHolder extends SimpleObjectItem
         commonFields.add("Office");
         commonFields.add("AccountingInventoryCode");
         commonFields.add("Comments");
+    }
+
+    public ArrayList<String> getBaseList()
+    {
+        return subMainCategory;
     }
 
     public ArrayList<String> getSubcategoryList()
