@@ -56,6 +56,10 @@ public class SearchActivity extends AppCompatActivity
                 Object item = parent.getItemAtPosition(pos);
                 String GlobalCategory = parent.getItemAtPosition(pos).toString();
                 Log.i(LOG,"F:[spnrItemsCategory] selected item>> " + parent.getSelectedItem());
+
+                //TODO: Here we will add item fields
+                addItemsOnItemFields(pos);
+
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -68,7 +72,9 @@ public class SearchActivity extends AppCompatActivity
             {
                 Object item = parent.getItemAtPosition(pos);
                 String GlobalCategory = parent.getItemAtPosition(pos).toString();
-                Log.i(LOG,"F:[sprItemField] selected item>> " + parent.getSelectedItem());
+                Log.i(LOG,"F:[sprItemField] selected item>> " + parent.getSelectedItem()
+                        + " position: " + pos);
+
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -77,7 +83,7 @@ public class SearchActivity extends AppCompatActivity
 
         addItemsOnCategory();
         addItemsOnSubCategory(0);
-        addItemsOnItemFields(0);
+
         //##########################################################################################
 
         btnSearchInDatabase.setOnClickListener(new View.OnClickListener()
@@ -111,11 +117,12 @@ public class SearchActivity extends AppCompatActivity
                                                 info.getSubcategoryList()));
     }
 
+    //
     private void addItemsOnItemFields(int position)
     {
         ItemsHolder info = new ItemsHolder();
         sprItemField.setAdapter(new ArrayAdapter<String>(this,
                                                 android.R.layout.simple_spinner_dropdown_item,
-                                                info.getCommonFieldsList()));
+                                                info.getItemFieldsList(position)));
     }
 }

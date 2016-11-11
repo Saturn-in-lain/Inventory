@@ -186,7 +186,7 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
                                                     "ModificationDate:1",
                                                     "Owner:1",
                                                     "SerialNumber:1",
-                                                    "barcode:1",
+                                                    "4823074003908",
                                                     "Location:1",
                                                     "State:1",
                                                     "GuaranteeExpiration:1",
@@ -201,7 +201,7 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
                                                     "ModificationDate:2",
                                                     "Owner:2",
                                                     "SerialNumber:2",
-                                                    "barcode:2",
+                                                    "2000038480131",
                                                     "Location:2",
                                                     "State:2",
                                                     "GuaranteeExpiration:2",
@@ -265,7 +265,47 @@ public class DatabaseItemEmulator extends SQLiteOpenHelper
 
     }
 
+    //################################################################################################
+    public ItemDescription getSearchedItem (String barcode)
+    {
+        ItemDescription item = null;
+        SQLiteDatabase db = this.getWritableDatabase();
+        //ContentValues values = new ContentValues();
+
+        String query = "SELECT * FROM " + DICTIONARY_TABLE_NAME + " WHERE barcode LIKE '%"+barcode+"%'";
+        Cursor mCursor = db.rawQuery(query, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        else{
+            Log.e("Inventory DB","Inventory database error of cursor");
+        }
+        Log.d("Inventory DB!",String.valueOf(mCursor.getCount()));
+
+        if (mCursor.getCount() > 0)
+        {
+            item = new ItemDescription(mCursor.getString(1),
+                                                        mCursor.getString(2),
+                                                        mCursor.getString(3),
+                                                        mCursor.getString(4),
+                                                        mCursor.getString(5),
+                                                        mCursor.getString(6),
+                                                        mCursor.getString(7),
+                                                        mCursor.getString(8),
+                                                        mCursor.getString(9),
+                                                        mCursor.getString(10),
+                                                        mCursor.getString(11),
+                                                        mCursor.getString(12),
+                                                        mCursor.getString(13),
+                                                        mCursor.getString(14));
+        }
+
+        return item;
+    }
+    //################################################################################################
     /**
+     *
      * setImageOfModel
      * @param
      */

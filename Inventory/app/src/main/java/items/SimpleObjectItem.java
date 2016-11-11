@@ -3,6 +3,7 @@ package items;
 //import android.icu.text.DateFormat;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Date;
 
@@ -12,6 +13,8 @@ import java.util.Date;
 
 public class SimpleObjectItem
 {
+    private static ArrayList<String> commonFields = null;
+
     public String model                   = null;
     public String manufacturer            = null;
     public String creator                 = null;
@@ -28,17 +31,7 @@ public class SimpleObjectItem
     public String comments                = null;
     public String image                   = null;
 
-    enum ITEM_TYPE
-    {
-        DATA_TYPE_INT,       //0
-        DATA_TYPE_STRING,    //1
-        DATA_TYPE_FLOAT,     //2
-        DATA_TYPE_BOOLEAN,   //3
-        DATA_TYPE_LONG,      //4
-        DATA_TYPE_OBJECT,    //5
-        DATA_TYPE_DOUBLE,    //6
-        DATA_TYPE_UNKNOWN    //7
-    }
+    //public ArrayList<String> commonFields = new ArrayList<String>();
 
     enum STATE_TYPE_STRUCTURE
     {
@@ -65,14 +58,14 @@ public class SimpleObjectItem
                                String barcode, String location, String state, String guaranteeExpiration,
                                String office, String accountingInventoryCode, String comments)
     {
-        this.model        = model;
-        this.manufacturer = manufacturer;
-        this.creator      = creator;
-        this.version      = version;
-        this.modificationDate = modificationDate;
-        this.owner        = owner;
-        this.serialNumber = serialNumber;
-        this.barcode      = barcode;
+        this.model                   = model;
+        this.manufacturer            = manufacturer;
+        this.creator                 = creator;
+        this.version                 = version;
+        this.modificationDate        = modificationDate;
+        this.owner                   = owner;
+        this.serialNumber            = serialNumber;
+        this.barcode                 = barcode;
         this.location                = location;
         this.state                   = STATE_TYPE_STRUCTURE.NORMAL.getParameterString();                //TODO HARDCODE
         this.guaranteeExpiration     = guaranteeExpiration;
@@ -81,6 +74,10 @@ public class SimpleObjectItem
         this.comments                = comments;
     }
 
+    /**
+     * toString - Debug method to type all fields of this class
+     *
+     */
     public String toString()
     {
         String retValue = null;
@@ -99,5 +96,28 @@ public class SimpleObjectItem
                     "AccountingInventoryCode: " + accountingInventoryCode+"\n"+
                     "Comments: "                + comments              +"\n";
         return retValue;
+    }
+
+    /**
+     * getCommonFieldsList - Return string list with basic fields
+     */
+    public static ArrayList<String> getCommonFieldsList()
+    {
+        commonFields = new ArrayList<String>();
+        commonFields.add("Model");
+        commonFields.add("Manufacturer");
+        commonFields.add("Creator");
+        commonFields.add("Version");
+        commonFields.add("ModificationDate");
+        commonFields.add("Owner");
+        commonFields.add("SerialNumber");
+        commonFields.add("Barcode");
+        commonFields.add("Location");
+        commonFields.add("State");
+        commonFields.add("GuaranteeExpiration");
+        commonFields.add("Office");
+        commonFields.add("AccountingInventoryCode");
+        commonFields.add("Comments");
+        return commonFields;
     }
 }

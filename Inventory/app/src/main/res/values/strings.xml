@@ -21,10 +21,10 @@
     <string name="select_camera">   Select a Camera </string>
 
     <!-- Search Activity -->
-    <string name="global_category">Select category</string>
-    <string name="sub_category">Select Item category</string>
-    <string name="field_to_search">Select Item Field</string>
-    <string name="search_field">Type searched info</string>
+    <string name="global_category">Category</string>
+    <string name="sub_category">Sub-category</string>
+    <string name="field_to_search">Item Field</string>
+    <string name="search_field">Type searched info:</string>
     <string name="search_here">Search</string>
 
     <string name="item_found">Item description</string>

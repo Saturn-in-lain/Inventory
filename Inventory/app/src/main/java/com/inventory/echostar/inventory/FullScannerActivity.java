@@ -1,5 +1,6 @@
 package com.inventory.echostar.inventory;
 
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import com.google.zxing.Result;
 import java.util.ArrayList;
 import java.util.List;
 
+import database_manager.DatabaseItemEmulator;
+import database_manager.ItemDescription;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import scanner.BaseScannerActivity;
 import scanner.CameraSelectorDialogFragment;
@@ -148,12 +152,50 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
 
     @Override
     public void handleResult(Result rawResult) {
-        try {
+        try
+        {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             r.play();
-        } catch (Exception e) {}
-        showMessageDialog("Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString());
+        }
+        catch (Exception e) {}
+
+
+        Log.e("LOG",rawResult.getBarcodeFormat().toString());
+
+        //#####################################################################################3
+        Intent intent = new Intent(FullScannerActivity.this, ItemDescriptionActivity.class);
+        DatabaseItemEmulator database = new DatabaseItemEmulator(this);
+        database.initializeDefaultItemDataBase();
+        ItemDescription items = database.getSearchedItem(rawResult.getText());
+
+        //###########################################################################
+        if (items != null)
+        {
+            intent.putExtra("Model", items.model);
+            intent.putExtra("Manufacturer", items.manufacturer);
+            intent.putExtra("Creator", items.creator);
+            intent.putExtra("Version", items.version);
+            intent.putExtra("ModificationDate", items.modificationDate);
+            intent.putExtra("Owner", items.owner);
+            intent.putExtra("SerialNumber", items.serialNumber);
+            intent.putExtra("Barcode", items.barcode);
+            intent.putExtra("Location", items.location);
+            intent.putExtra("State", items.state);
+            intent.putExtra("Office", items.office);
+            intent.putExtra("GuaranteeExpiration", items.guaranteeExpiration);
+            intent.putExtra("AccountingInventoryCode", items.accountingInventoryCode);
+            intent.putExtra("Comments", items.comments);
+            FullScannerActivity.this.startActivity(intent);
+        }
+        else
+        {
+            showMessageDialog("Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString());
+        }
+        //###########################################################################
+
+        //###########################################################################
+
     }
 
     public void showMessageDialog(String message) {
