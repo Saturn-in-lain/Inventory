@@ -172,20 +172,20 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
         //###########################################################################
         if (items != null)
         {
-            intent.putExtra("Model", items.model);
+            intent.putExtra("Model",        items.model);
             intent.putExtra("Manufacturer", items.manufacturer);
-            intent.putExtra("Creator", items.creator);
-            intent.putExtra("Version", items.version);
+            intent.putExtra("Creator",      items.creator);
+            intent.putExtra("Version",          items.version);
             intent.putExtra("ModificationDate", items.modificationDate);
-            intent.putExtra("Owner", items.owner);
-            intent.putExtra("SerialNumber", items.serialNumber);
-            intent.putExtra("Barcode", items.barcode);
-            intent.putExtra("Location", items.location);
-            intent.putExtra("State", items.state);
-            intent.putExtra("Office", items.office);
-            intent.putExtra("GuaranteeExpiration", items.guaranteeExpiration);
-            intent.putExtra("AccountingInventoryCode", items.accountingInventoryCode);
-            intent.putExtra("Comments", items.comments);
+            intent.putExtra("Owner",            items.owner);
+            intent.putExtra("SerialNumber",     items.serialNumber);
+            intent.putExtra("Barcode",          items.barcode);
+            intent.putExtra("Location",         items.location);
+            intent.putExtra("State",            items.state);
+            intent.putExtra("Office",                   items.office);
+            intent.putExtra("GuaranteeExpiration",      items.guaranteeExpiration);
+            intent.putExtra("AccountingInventoryCode",  items.accountingInventoryCode);
+            intent.putExtra("Comments",                 items.comments);
             FullScannerActivity.this.startActivity(intent);
         }
         else

@@ -158,7 +158,7 @@ public class ItemsHolder extends SimpleObjectItem
                  unionFields =  obj18.getUniqueItemFields();
                 break;
              case 18:
-                Microphone obj19 = new Microphone ();
+                 Microphone obj19 = new Microphone ();
                  unionFields =  obj19.getUniqueItemFields();
                 break;
              case 19:
@@ -178,7 +178,7 @@ public class ItemsHolder extends SimpleObjectItem
                  unionFields = obj23.getUniqueItemFields();
                  break;
              case 23:
-                SMARTBox obj24 = new SMARTBox();
+                 SMARTBox obj24 = new SMARTBox();
                  unionFields = obj24.getUniqueItemFields();
                 break;
              case 24:
@@ -208,13 +208,19 @@ public class ItemsHolder extends SimpleObjectItem
 * -------------------------------------------------------------------------------------------------
 * */
 
-class STB  extends SimpleObjectItem implements GlobalItemAPI
+class STB extends SimpleObjectItem implements GlobalItemAPI
 {
     String ReceiverCAID     = null;
     String Secure           = null;
     String serviceProvider  = null;
 
-    ArrayList<String> Fields = new ArrayList<String>();
+    public STB()
+    {
+        Fields.add("Receiver CAID");
+        Fields.add("Secure");
+        Fields.add("Service Provider");
+    }
+
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -226,7 +232,6 @@ class Smartcard  extends SimpleObjectItem implements GlobalItemAPI
 {
     String serialNumber     = null;
     String serviceProvider  = null;
-    ArrayList<String> Fields = new ArrayList<String>();
 
     public Smartcard()
     {
@@ -246,6 +251,13 @@ class StorageDrive  extends SimpleObjectItem implements GlobalItemAPI
     String storageType = HARDDRIVES.EXTERNAL.toString();
     String interfaces = INTERFACES.USB.toString();
     long capacity = 0;
+
+    public StorageDrive()
+    {
+        Fields.add("Storage Type");
+        Fields.add("Interfaces");
+        Fields.add("Capacity");
+    }
 
     enum HARDDRIVES
     {
@@ -290,7 +302,6 @@ class StorageDrive  extends SimpleObjectItem implements GlobalItemAPI
         }
     }
 
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -302,7 +313,12 @@ class TestEquipment  extends SimpleObjectItem implements GlobalItemAPI
     String type          = null;
     Date calibrationDate = null;
 
-    ArrayList<String> Fields = new ArrayList<String>();
+    public TestEquipment()
+    {
+        Fields.add("Type");
+        Fields.add("Calibration Date");
+    }
+
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -314,7 +330,12 @@ class Cable  extends SimpleObjectItem implements GlobalItemAPI
    String title     = null;
    double length    = 0.0;
 
-    ArrayList<String> Fields = new ArrayList<String>();
+    public Cable()
+    {
+        Fields.add("Title");
+        Fields.add("Length");
+    }
+
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -325,7 +346,10 @@ class Adapter extends SimpleObjectItem implements GlobalItemAPI
 {
     String title = null;
 
-    ArrayList<String> Fields = new ArrayList<String>();
+    public Adapter()
+    {
+        Fields.add("Title");
+    }
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -338,6 +362,14 @@ class PSU extends SimpleObjectItem implements GlobalItemAPI
     String socketType = SOKETTYPE.ENGLISH.toString();
     int inputCurrent = 0;
     int outputCurrent = 0;
+
+    public PSU()
+    {
+        Fields.add("Title");
+        Fields.add("Socket type");
+        Fields.add("Input carrent");
+        Fields.add("Output carrent");
+    }
 
     enum SOKETTYPE
     {
@@ -359,7 +391,6 @@ class PSU extends SimpleObjectItem implements GlobalItemAPI
         }
     }
 
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -370,7 +401,10 @@ class PSU extends SimpleObjectItem implements GlobalItemAPI
 class FrontPanel extends SimpleObjectItem implements GlobalItemAPI
 {
     String title = null;
-    ArrayList<String> Fields = new ArrayList<String>();
+    public FrontPanel()
+    {
+        Fields.add("Title");
+    }
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -380,7 +414,10 @@ class FrontPanel extends SimpleObjectItem implements GlobalItemAPI
 class Headphones extends SimpleObjectItem implements GlobalItemAPI
 {
     boolean hasMicrophone = false;
-    ArrayList<String> Fields = new ArrayList<String>();
+    public Headphones()
+    {
+        Fields.add("Headphone");
+    }
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -390,7 +427,6 @@ class Headphones extends SimpleObjectItem implements GlobalItemAPI
 class DebugTool extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -400,7 +436,6 @@ class DebugTool extends SimpleObjectItem implements GlobalItemAPI
 class TV  extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -410,7 +445,6 @@ class TV  extends SimpleObjectItem implements GlobalItemAPI
 class RCU extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -420,7 +454,6 @@ class RCU extends SimpleObjectItem implements GlobalItemAPI
 class VideoCaptureCard extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -430,7 +463,6 @@ class VideoCaptureCard extends SimpleObjectItem implements GlobalItemAPI
 class SAGE extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -440,7 +472,6 @@ class SAGE extends SimpleObjectItem implements GlobalItemAPI
 class TransformerStepDown extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -450,7 +481,6 @@ class TransformerStepDown extends SimpleObjectItem implements GlobalItemAPI
 class TransformerIsolation extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -460,7 +490,6 @@ class TransformerIsolation extends SimpleObjectItem implements GlobalItemAPI
 class NetworkEquipment extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -470,17 +499,15 @@ class NetworkEquipment extends SimpleObjectItem implements GlobalItemAPI
 class IRReceiver extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
     }
 }
 
-class CD extends SimpleObjectItem
+class CD extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -490,7 +517,6 @@ class CD extends SimpleObjectItem
 class Microphone extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -500,7 +526,6 @@ class Microphone extends SimpleObjectItem implements GlobalItemAPI
 class StreamingEquipment extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -510,7 +535,6 @@ class StreamingEquipment extends SimpleObjectItem implements GlobalItemAPI
 class RedRat extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -520,7 +544,6 @@ class RedRat extends SimpleObjectItem implements GlobalItemAPI
 class USBhub extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -530,7 +553,6 @@ class USBhub extends SimpleObjectItem implements GlobalItemAPI
 class SMARTBox extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -540,7 +562,6 @@ class SMARTBox extends SimpleObjectItem implements GlobalItemAPI
 class SmartcardReader extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
@@ -550,8 +571,7 @@ class SmartcardReader extends SimpleObjectItem implements GlobalItemAPI
 class WebCamera extends SimpleObjectItem implements GlobalItemAPI
 {
     //No additional fields
-    ArrayList<String> Fields = new ArrayList<String>();
-    public ArrayList<String> getUniqueItemFields()
+     public ArrayList<String> getUniqueItemFields()
     {
         return Fields;
     }

@@ -39,6 +39,19 @@ public class RESTRequests
     private String REGISTER_URL = null;
     private RequestQueue requestQueue = null;
     private Context ctx = null;
+    private String ClassResponse = null;
+
+    public void RESTRequests(Context context)
+    {
+        ctx = context;
+        requestQueue = Volley.newRequestQueue(context);
+        REGISTER_URL = "http://echostarinventory.000webhostapp.com/";
+    }
+
+    private void setResponse(String resp)
+    {
+        ClassResponse = resp;
+    }
 
     public void RESTRequests(Context context, URL url)
     {
@@ -92,29 +105,34 @@ public class RESTRequests
         requestQueue.add(stringRequest);
     }
 
-    public void GETRequestSend(Context context)
+    public String GETRequestSend(Context context, String url_addon, JSONObject jsonRequest)
     {
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET,
-                REGISTER_URL,
-                null,
+                                                             REGISTER_URL + url_addon,
+                                                             jsonRequest,
                 new Response.Listener<JSONObject>()
                 {
                     @Override
                     public void onResponse(JSONObject response) {
                         // display response
                         Log.d("Response", response.toString());
+                        setResponse(response.toString());
                     }
                 },
                 new Response.ErrorListener()
                 {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("Error.Response", error.toString());
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        Log.d("Error.Response",error.toString());
+                        setResponse(error.toString());
                     }
                 }
         );
         requestQueue.add(getRequest);
+
+        return ClassResponse;
     }
 
     public void PUTRequestSend(Context context)
