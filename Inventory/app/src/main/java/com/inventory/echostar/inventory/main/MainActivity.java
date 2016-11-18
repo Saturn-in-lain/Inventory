@@ -31,15 +31,17 @@ public class MainActivity extends AppCompatActivity implements MainView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String role = intent.getStringExtra("role");
 
         TextView txtWelcomeMsg = (TextView) findViewById(R.id.txtMainActivityHello);
         TextView txtInstructionsMsg = (TextView) findViewById(R.id.txtInstructions);
 
+        // TODO: This portion can be send in presenter -----------------------------------
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
+        String role = intent.getStringExtra("role");
         String message = username + " welcome to inventory tool. Your role is: " + role;
         txtWelcomeMsg.setText(message);
+        // --------------------------------------------------------------------------------
 
         ZxingScanButton = (Button) findViewById(R.id.btnZxingScan);
         ZBarScanButton = (Button) findViewById(R.id.btnZbarScan);
