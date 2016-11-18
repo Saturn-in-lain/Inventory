@@ -28,6 +28,22 @@
     <string name="search_here">Search</string>
 
     <string name="item_found">Item description</string>
+
+    <string name="instructions">Inventory tool application provide you opportunity to check all
+        equipment on your site. By means of this tool you can perform manual search using "Search"
+        button. Then use Category field and Item field to make search more efficient.
+        Another variant is to use Barcode scanner. In case you have device and you want to check
+        information on it, use Scan button and using camera detect barcode. In case device present
+        in database, you will get information on it. Otherwise popup will notify you that search
+        does not detect such device in database.
+        Admin user will have opportunity to add and modify all available information for any device.
+        Tips: In case your device doe not have image, please create photo for it.
+    </string>
+
+    <string name="username_error">username_error</string>
+    <string name="password_error">password_error</string>
+    <string name="login_failed">login_failed</string>
+
     <!-- ############################# Upper strings are checked as valid ###################### -->
 
     <string name="title_activity_scan"> ScanActivity    </string>
@@ -51,14 +67,6 @@
     <string name="title_activity_base_scanner">BaseScannerActivity</string>
 
 
-    <string name="scanner_fragment_activity">ZXing Scanner - Full Fragment Activity</string>
-    <string name="simple_scanner_activity">ZXing Scanner - Simple Activity</string>
-    <string name="custom_view_finder_scanner_activity">ZXing Scanner - Custom View Finder Activity</string>
-    <string name="scaling_scanner_activity">ZXing Scanner - Scaling Activity</string>
-    <string name="simple_scanner_fragment_activity">ZXing Scanner - Simple Fragment Activity</string>
-    <string name="full_screen_scanner_fragment_activity">ZXing Scanner - Full Screen Fragment Activity</string>
-    <string name="simple_activity_sample">Simple Activity Sample</string>
-    <string name="simple_fragment_sample">Simple Fragment Sample</string>
     <string name="activity_sample">Full Activity Sample</string>
     <string name="fragment_sample">Full Fragment Sample</string>
     <string name="full_screen_sample">Full Screen Fragment Sample</string>

@@ -1,57 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.inventory.echostar.inventory.LoginActivity">
+    tools:context="com.inventory.echostar.inventory.login.LoginActivity">
 
-
-    <EditText
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginTop="34dp"
-        android:id="@+id/edtxtName"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/login_hint"
-        android:selectAllOnFocus="false"
-        android:textAlignment="center"
-        android:text="@string/login" />
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_below="@+id/edtxtName"
-        android:layout_alignStart="@+id/edtxtName"
-        android:layout_marginTop="28dp"
-        android:id="@+id/edtxtPassword"
-        android:textAlignment="center"
-        android:hint="@string/password" />
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:text="@string/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:id="@+id/btnLogging"
-        android:layout_below="@+id/edtxtPassword"
-        android:layout_centerHorizontal="true"/>
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <CheckBox
-        android:text="@string/remember_me"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtxtPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
-        android:id="@+id/chBxRememberMe" />
-</RelativeLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edtxtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="username"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@string/login" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtxtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="push"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:text="@string/login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="88dp"
+                android:id="@+id/btnLogging"
+                android:layout_below="@+id/edtxtPassword"
+                android:layout_centerHorizontal="true"
+                android:onClick="onLoginClicked"/>
+
+
+            <CheckBox
+                android:text="@string/remember_me"
+                android:layout_width="365dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtxtPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp"
+                android:id="@+id/chBxRememberMe"
+                android:gravity="center"
+                android:onClick="onRememberMeClicked"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

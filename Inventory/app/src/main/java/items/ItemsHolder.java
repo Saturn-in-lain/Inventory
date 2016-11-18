@@ -28,6 +28,7 @@ public class ItemsHolder extends SimpleObjectItem
 
     public void initSubCategoryList()
     {
+        subCategory.clear();
         subCategory.add("DebugTool");               //#0
         subCategory.add("TV");                      //#1
         subCategory.add("STB");                     //#2
@@ -216,6 +217,7 @@ class STB extends SimpleObjectItem implements GlobalItemAPI
 
     public STB()
     {
+        Fields.clear();
         Fields.add("Receiver CAID");
         Fields.add("Secure");
         Fields.add("Service Provider");
@@ -235,6 +237,7 @@ class Smartcard  extends SimpleObjectItem implements GlobalItemAPI
 
     public Smartcard()
     {
+        Fields.clear();
         Fields.add("Serial Number");
         Fields.add("Service Provider");
     }
@@ -254,6 +257,7 @@ class StorageDrive  extends SimpleObjectItem implements GlobalItemAPI
 
     public StorageDrive()
     {
+        Fields.clear();
         Fields.add("Storage Type");
         Fields.add("Interfaces");
         Fields.add("Capacity");
@@ -315,6 +319,7 @@ class TestEquipment  extends SimpleObjectItem implements GlobalItemAPI
 
     public TestEquipment()
     {
+        Fields.clear();
         Fields.add("Type");
         Fields.add("Calibration Date");
     }
@@ -332,6 +337,7 @@ class Cable  extends SimpleObjectItem implements GlobalItemAPI
 
     public Cable()
     {
+        Fields.clear();
         Fields.add("Title");
         Fields.add("Length");
     }
@@ -365,6 +371,7 @@ class PSU extends SimpleObjectItem implements GlobalItemAPI
 
     public PSU()
     {
+        Fields.clear();
         Fields.add("Title");
         Fields.add("Socket type");
         Fields.add("Input carrent");
@@ -403,6 +410,7 @@ class FrontPanel extends SimpleObjectItem implements GlobalItemAPI
     String title = null;
     public FrontPanel()
     {
+        Fields.clear();
         Fields.add("Title");
     }
     public ArrayList<String> getUniqueItemFields()
@@ -416,6 +424,7 @@ class Headphones extends SimpleObjectItem implements GlobalItemAPI
     boolean hasMicrophone = false;
     public Headphones()
     {
+        Fields.clear();
         Fields.add("Headphone");
     }
     public ArrayList<String> getUniqueItemFields()

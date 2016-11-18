@@ -1,4 +1,4 @@
-package com.inventory.echostar.inventory;
+package com.inventory.echostar.inventory.login;
 
 import android.util.Log;
 

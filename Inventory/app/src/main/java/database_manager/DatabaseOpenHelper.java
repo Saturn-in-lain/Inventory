@@ -45,12 +45,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        Log.i("Inventory DB","onCreate");
+        //Log.i("Inventory DB","onCreate");
         db.execSQL(DICTIONARY_TABLE_CREATE);
     }
 
     public void onDropTable() {
-        Log.i("Inventory DB","onDropTable");
+        //Log.i("Inventory DB","onDropTable");
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + DICTIONARY_TABLE_NAME);
         db.execSQL(DICTIONARY_TABLE_CREATE);

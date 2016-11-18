@@ -22,7 +22,7 @@ public class SearchActivity extends AppCompatActivity
     private Spinner spnrItemsCategory   = null;
     private Spinner sprItemField        = null;
     private EditText edtxtSearchField   = null;
-    private Button btnSearchInDatabase = null;
+    private Button btnSearchInDatabase  = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
