@@ -1,5 +1,6 @@
-package com.inventory.echostar.inventory;
+package com.inventory.echostar.inventory.scanner;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.inventory.echostar.inventory.R;
+import com.inventory.echostar.inventory.item_description.ItemDescriptionActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +32,16 @@ import scanner.MessageDialogFragment;
 
 public class FullScannerActivity extends BaseScannerActivity implements MessageDialogFragment.MessageDialogListener,
         ZXingScannerView.ResultHandler, FormatSelectorDialogFragment.FormatSelectorDialogListener,
-        CameraSelectorDialogFragment.CameraSelectorDialogListener
+        CameraSelectorDialogFragment.CameraSelectorDialogListener, ScannerView
 {
+
+    private ScannerPresenter presenter;
+
     private static final String FLASH_STATE         = "FLASH_STATE";
     private static final String AUTO_FOCUS_STATE    = "AUTO_FOCUS_STATE";
     private static final String SELECTED_FORMATS    = "SELECTED_FORMATS";
     private static final String CAMERA_ID           = "CAMERA_ID";
+
     private ZXingScannerView mScannerView;
     private boolean mFlash;
     private boolean mAutoFocus;
@@ -42,8 +49,12 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
     private int mCameraId = -1;
 
     @Override
-    public void onCreate(Bundle state) {
+    public void onCreate(Bundle state)
+    {
         super.onCreate(state);
+
+        presenter = new ScannerPresenter(this);
+
         if(state != null)
         {
             mFlash = state.getBoolean(FLASH_STATE, false);
@@ -151,7 +162,8 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
     }
 
     @Override
-    public void handleResult(Result rawResult) {
+    public void handleResult(Result rawResult)
+    {
         try
         {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -165,40 +177,18 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
 
         //#####################################################################################3
         Intent intent = new Intent(FullScannerActivity.this, ItemDescriptionActivity.class);
-        DatabaseItemEmulator database = new DatabaseItemEmulator(this);
-        database.initializeDefaultItemDataBase();
-        ItemDescription items = database.getSearchedItem(rawResult.getText());
-
-        //###########################################################################
-        if (items != null)
-        {
-            intent.putExtra("Model",        items.model);
-            intent.putExtra("Manufacturer", items.manufacturer);
-            intent.putExtra("Creator",      items.creator);
-            intent.putExtra("Version",          items.version);
-            intent.putExtra("ModificationDate", items.modificationDate);
-            intent.putExtra("Owner",            items.owner);
-            intent.putExtra("SerialNumber",     items.serialNumber);
-            intent.putExtra("Barcode",          items.barcode);
-            intent.putExtra("Location",         items.location);
-            intent.putExtra("State",            items.state);
-            intent.putExtra("Office",                   items.office);
-            intent.putExtra("GuaranteeExpiration",      items.guaranteeExpiration);
-            intent.putExtra("AccountingInventoryCode",  items.accountingInventoryCode);
-            intent.putExtra("Comments",                 items.comments);
-            FullScannerActivity.this.startActivity(intent);
-        }
-        else
-        {
-            showMessageDialog("Contents = " + rawResult.getText() + ", Format = " + rawResult.getBarcodeFormat().toString());
-        }
-        //###########################################################################
-
-        //###########################################################################
-
+        presenter.searchItemByBarcode(intent,
+                                        rawResult.getText());
+        //#####################################################################################3
     }
 
-    public void showMessageDialog(String message) {
+    /**
+     * @Function: showMessageDialog
+     * @params: String
+     */
+    @Override
+    public void showMessageDialog(String message)
+    {
         DialogFragment fragment = MessageDialogFragment.newInstance("Scan Results", message, this);
         fragment.show(getSupportFragmentManager(), "scan_results");
     }
@@ -262,5 +252,15 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
         mScannerView.stopCamera();
         closeMessageDialog();
         closeFormatsDialog();
+    }
+
+    /**
+     * @Function: getThis - Override method
+     * @params: None
+     */
+    @Override
+    public Context getThis()
+    {
+        return this;
     }
 }

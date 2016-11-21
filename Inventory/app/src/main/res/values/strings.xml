@@ -8,7 +8,7 @@
     <string name="login_btn">   Sign In         </string>
     <string name="remember_me"> Remember me?    </string>
 
-    <string name="scanner_activity_zxing">ZXing Scanner</string>
+    <string name="scanner_activity_zxing">Echostar Inventory Scanner</string>
     <string name="scanner_activity_zbar">ZBar Scanner</string>
 
     <string name="toggle_flash">    Flash           </string>

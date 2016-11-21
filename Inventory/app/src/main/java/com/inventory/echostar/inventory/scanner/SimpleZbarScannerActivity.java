@@ -1,9 +1,11 @@
-package com.inventory.echostar.inventory;
+package com.inventory.echostar.inventory.scanner;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.inventory.echostar.inventory.R;
 
 import me.dm7.barcodescanner.zbar.Result;
 import me.dm7.barcodescanner.zbar.ZBarScannerView;

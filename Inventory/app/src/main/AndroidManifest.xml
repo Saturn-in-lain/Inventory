@@ -30,7 +30,7 @@
         </activity>
         <activity android:name=".main.MainActivity" />
         <activity
-            android:name=".FullScannerActivity"
+            android:name=".scanner.FullScannerActivity"
             android:label="@string/scanner_activity_zxing"
             android:theme="@style/AppOverlayTheme"
             android:uiOptions="splitActionBarWhenNarrow">
@@ -39,12 +39,12 @@
                 android:value="splitActionBarWhenNarrow" />
         </activity>
         <activity
-            android:name=".SimpleZbarScannerActivity"
+            android:name=".scanner.SimpleZbarScannerActivity"
             android:label="@string/scanner_activity_zbar"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".SearchResultActivity" />
-        <activity android:name=".ItemDescriptionActivity"></activity>
+        <activity android:name=".search.SearchActivity" />
+        <activity android:name=".search_result.SearchResultActivity" />
+        <activity android:name=".item_description.ItemDescriptionActivity"></activity>
     </application>
 
 </manifest>

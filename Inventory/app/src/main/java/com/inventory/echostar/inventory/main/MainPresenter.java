@@ -8,9 +8,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
-import com.inventory.echostar.inventory.FullScannerActivity;
-import com.inventory.echostar.inventory.SearchActivity;
-import com.inventory.echostar.inventory.SimpleZbarScannerActivity;
+import com.inventory.echostar.inventory.scanner.FullScannerActivity;
+import com.inventory.echostar.inventory.search.SearchActivity;
+import com.inventory.echostar.inventory.scanner.SimpleZbarScannerActivity;
 
 /**
  * Created by stas.savinov on 11/18/2016.
@@ -38,7 +38,7 @@ public class MainPresenter
 
     /**
      * @Function: onClickZxingScan - Override method
-     * @params: View
+     * @params:
      */
     public void onClickZxingScan()
     {
@@ -47,7 +47,7 @@ public class MainPresenter
 
     /**
      * @Function: onClickBarScan - Override method
-     * @params: View
+     * @params:
      */
     public void onClickBarScan()
     {
@@ -56,13 +56,17 @@ public class MainPresenter
 
     /**
      * @Function: onClickSearch - Override method
-     * @params: View
+     * @params:
      */
     public void onClickSearch()
     {
         launchActivity(SearchActivity.class);
     }
 
+    /**
+     * @Function: launchActivity - Override method
+     * @params: Class
+     */
     public void launchActivity(Class<?> clss)
     {
         if (ContextCompat.checkSelfPermission(ctx, Manifest.permission.CAMERA)
@@ -79,6 +83,10 @@ public class MainPresenter
         }
     }
 
+    /**
+     * @Function: onPermissionsResult
+     * @params:
+     */
     public void onPermissionsResult(int requestCode,  String permissions[], int[] grantResults)
     {
         switch (requestCode)

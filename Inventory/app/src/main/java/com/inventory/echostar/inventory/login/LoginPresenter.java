@@ -273,7 +273,7 @@ public class LoginPresenter
         }
         else
         {
-            Log.e("Inventory","Usr is null");
+            Log.e("Inventory","User is non authorized!");
         }
         return retValue;
     }

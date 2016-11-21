@@ -1,4 +1,4 @@
-package com.inventory.echostar.inventory;
+package com.inventory.echostar.inventory.search_result;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.inventory.echostar.inventory.R;
 
 import java.util.List;
 
@@ -64,7 +66,11 @@ public class ListAdapter extends BaseAdapter
         text.setText(model);
         return vi;
     }
-    
+
+    /**
+     * @Function: onItemClick - Override method
+     * @params:
+     */
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
         //TODO Stub-function
