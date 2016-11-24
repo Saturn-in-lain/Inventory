@@ -1,0 +1,10 @@
+com.inventory.echostar.inventory
+com.inventory.echostar.inventory.item_description
+com.inventory.echostar.inventory.login
+com.inventory.echostar.inventory.main
+com.inventory.echostar.inventory.scanner
+com.inventory.echostar.inventory.search
+com.inventory.echostar.inventory.search_result
+database_manager
+items
+scanner

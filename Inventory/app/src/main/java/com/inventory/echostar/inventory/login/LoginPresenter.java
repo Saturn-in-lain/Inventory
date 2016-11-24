@@ -58,13 +58,13 @@ public class LoginPresenter
     {
         this.view = view;
         this.database = new DatabaseOpenHelper(view.getLoginViewContext());
-        this.ctx = this.view.getLoginViewContext();
+        this.ctx = view.getLoginViewContext();
 
         m_ProgressView = view.getProgressView();
         m_LoginFormView = view.getLogingForm();
 
-        this.settings = this.ctx.getSharedPreferences(PreferenceName, 0);
-        this.prefsEditor = this.settings.edit();
+        this.settings = view.returnSharedPreferences();                                                 //this.ctx.getSharedPreferences(PreferenceName, 0);
+        this.prefsEditor = view.returnSharedPreferencesEditor();                                        //this.settings.edit();
     }
 
     /**

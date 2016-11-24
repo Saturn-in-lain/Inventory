@@ -20,6 +20,15 @@ class SearchItem implements SearchItemInterface
      * Constructor
      *
      */
+    public SearchItem()
+    {
+
+    }
+
+    /**
+     * Constructor
+     *
+     */
     public SearchItem(String subCategory)
     {
         nameOfThesubCategoty = subCategory;
@@ -55,7 +64,7 @@ class SearchItem implements SearchItemInterface
         boolean retVal    = true;
         String  url_addon = null;
 
-        RESTRequests request = new RESTRequests();
+        RESTRequests request = new RESTRequests(ctx);
         JSONObject jsonRequest = null;
 
         if (SelectedSearchField == "Manufacturer")
@@ -119,13 +128,13 @@ class SearchItem implements SearchItemInterface
      * @Descriprion:
      * @param: ArrayList String
      */
-    public ArrayList<String> getItemFieldsList(Context ctx)
+    public ArrayList<String> getSubCategoriesList(Context ctx)
     {
 
-        RESTRequests request = new RESTRequests();
+        RESTRequests request = new RESTRequests(ctx);
         JSONObject jsonRequest = null;
 
-        String url_addon = "/equipment/category/" + SelectedSearchField;
+        String url_addon = "categories";
         String response = request.GETRequestSend(ctx, url_addon, jsonRequest);
 
         //Here we should fill Fields.

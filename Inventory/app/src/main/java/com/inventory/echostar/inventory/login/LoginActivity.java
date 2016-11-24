@@ -2,6 +2,7 @@ package com.inventory.echostar.inventory.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView
     private Button btnLogging;
     private View mProgressView;
     private View mLoginFormView;
+    private SharedPreferences settings;
+    private SharedPreferences.Editor prefsEditor;
 
     /**
      * @Function: onCreate
@@ -39,12 +42,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        presenter = new LoginPresenter(this);
+        settings = this.getSharedPreferences("EchostarInventory", 0);
+        prefsEditor = settings.edit();
 
         edtTxtUserName  = (EditText) findViewById(R.id.edtxtName);
         edtTxtPassword  = (EditText) findViewById(R.id.edtxtPassword);
         chkbxRememberMe = (CheckBox) findViewById(R.id.chBxRememberMe);
         btnLogging      = (Button) findViewById(R.id.btnLogging);
+
+        presenter = new LoginPresenter(this);
 
         chkbxRememberMe.setChecked(presenter.getCheckBoxFromMemory());
         if (chkbxRememberMe.isChecked())
@@ -54,6 +60,27 @@ public class LoginActivity extends AppCompatActivity implements LoginView
         }
         this.getBaseContext();
     }
+
+    /**
+     * @Function: returnSharedPreferences
+     * @params: None
+     */
+    @Override
+    public SharedPreferences returnSharedPreferences()
+    {
+        return settings;
+    }
+
+    /**
+     * @Function:
+     * @params: None
+     */
+    @Override
+    public SharedPreferences.Editor returnSharedPreferencesEditor()
+    {
+        return prefsEditor;
+    }
+
     /**
      * @Function: onPause - Override method
      * @params: None
@@ -223,6 +250,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         return builder;
+    }
+
+    /**
+     * @Function: getThis - Override method
+     * @params: None
+     */
+    @Override
+    public Context getThis()
+    {
+        return this;
     }
 }
 

@@ -2,6 +2,7 @@ package com.inventory.echostar.inventory.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ScrollView;
@@ -37,4 +38,10 @@ public interface LoginView
     View getLogingForm();
 
     AlertDialog.Builder getAlertDialog();
+
+    Context getThis();
+
+    SharedPreferences returnSharedPreferences();
+
+    SharedPreferences.Editor returnSharedPreferencesEditor();
 }

@@ -22,7 +22,7 @@ public class MainPresenter
     private Context  ctx;
     private final String LOG  = "Main Activity";
 
-    private static final int ZXING_CAMERA_PERMISSION = 1;
+    private static final int CAMERA_PERMISSION = 1;
     private Class<?> mClss;
 
     /**
@@ -74,7 +74,7 @@ public class MainPresenter
         {
             mClss = clss;
             ActivityCompat.requestPermissions(view.getActivity(),
-                    new String[]{Manifest.permission.CAMERA}, ZXING_CAMERA_PERMISSION);
+                    new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION);
         }
         else
         {
@@ -91,7 +91,7 @@ public class MainPresenter
     {
         switch (requestCode)
         {
-            case ZXING_CAMERA_PERMISSION:
+            case CAMERA_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
                     if(mClss != null)

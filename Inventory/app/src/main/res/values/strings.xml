@@ -21,11 +21,11 @@
     <string name="select_camera">   Select a Camera </string>
 
     <!-- Search Activity -->
-    <string name="global_category">Category</string>
-    <string name="sub_category">Sub-category</string>
-    <string name="field_to_search">Item Field</string>
-    <string name="search_field">Type searched info:</string>
-    <string name="search_here">Search</string>
+    <string name="global_category"> Category            </string>
+    <string name="sub_category">    Sub-category        </string>
+    <string name="field_to_search"> Item Field          </string>
+    <string name="search_field">    Type searched info: </string>
+    <string name="search_here">     Search              </string>
 
     <string name="item_found">Item description</string>
 
@@ -60,19 +60,15 @@
     <string name="camera_error">Camera initialization error: %s</string>
     <string name="no_front_camera_found">No front facing camera found, using default one instead...</string>
     <string name="title_activity_scan_window">ScanWindowActivity</string>
-    <string name="hello_round">Hello Round World!</string>
-    <string name="hello_square">Hello Square World!</string>
     <string name="msg_default_status">Place a barcode inside the viewfinder rectangle to scan it. </string>
     <string name="title_activity_simple_scanner">SimpleScannerActivity</string>
     <string name="title_activity_base_scanner">BaseScannerActivity</string>
-
 
     <string name="activity_sample">Full Activity Sample</string>
     <string name="fragment_sample">Full Fragment Sample</string>
     <string name="full_screen_sample">Full Screen Fragment Sample</string>
     <string name="custom_view_finder_sample">Custom View Finder Sample</string>
     <string name="scaling_sample">Scaling Sample</string>
-
 
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>

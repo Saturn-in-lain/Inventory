@@ -34,8 +34,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView
         //btnSearchInDatabase = (Button)findViewById(R.id.btnSearchInDatabase);
 
         spnrGlobalCategory = (Spinner) findViewById(R.id.sprGlobalCategory);
-        spnrItemsCategory = (Spinner) findViewById(R.id.sprItemCategory);
-        sprItemField        = (Spinner) findViewById(R.id.sprItemField);
+        spnrItemsCategory  = (Spinner) findViewById(R.id.sprItemCategory);
+        sprItemField       = (Spinner) findViewById(R.id.sprItemField);
 
         presenter = new SearchPresenter(this);
 

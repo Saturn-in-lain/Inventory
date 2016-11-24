@@ -30,24 +30,19 @@ import java.util.Map;
 
 public class RESTRequests
 {
-    private String REGISTER_URL = null;
-    private RequestQueue requestQueue = null;
-    private Context ctx = null;
-    private String ClassResponse = null;
+    private String REGISTER_URL         = null;
+    private RequestQueue requestQueue   = null;
+    private Context ctx                 = null;
+    private String ClassResponse        = null;
 
-    public void RESTRequests(Context context)
+    public RESTRequests(Context context)
     {
         ctx = context;
         requestQueue = Volley.newRequestQueue(context);
-        REGISTER_URL = "http://echostarinventory.000webhostapp.com/";
+        REGISTER_URL = "http://kh0dw1000000370:53690/api/";
     }
 
-    private void setResponse(String resp)
-    {
-        ClassResponse = resp;
-    }
-
-    public void RESTRequests(Context context, URL url)
+    public RESTRequests(Context context, String url)
     {
         requestQueue = Volley.newRequestQueue(context);
         ctx = context;
@@ -55,12 +50,18 @@ public class RESTRequests
         {
             // TODO May be hardcode default site wont be a bad idea.
             // or we can add this field in application settings page
-            REGISTER_URL = "http://echostarinventory.000webhostapp.com/Login.php";
+            REGISTER_URL = "http://kh0dw1000000370:53690/api/";
+                    //"http://echostarinventory.000webhostapp.com/Login.php";
         }
         else
         {
-            REGISTER_URL = url.toString();
+            REGISTER_URL += url.toString();
         }
+    }
+
+    private void setResponse(String resp)
+    {
+        ClassResponse = resp;
     }
 
     public void POSTRequestSend(Context context)

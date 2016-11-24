@@ -38,19 +38,19 @@ public class ItemDescriptionPresenter
      */
     void setItemDataFromIntent(Intent intent)
     {
-        view.setActivityDataInfo("Model",intent.getStringExtra("Model"));
-        view.setActivityDataInfo("Manufacturer",intent.getStringExtra("Manufacturer"));
-        view.setActivityDataInfo("Creator",intent.getStringExtra("Creator"));
-        view.setActivityDataInfo("Version",intent.getStringExtra("v"));
+        view.setActivityDataInfo("Model",           intent.getStringExtra("Model"));
+        view.setActivityDataInfo("Manufacturer",    intent.getStringExtra("Manufacturer"));
+        view.setActivityDataInfo("Creator",         intent.getStringExtra("Creator"));
+        view.setActivityDataInfo("Version",         intent.getStringExtra("v"));
         view.setActivityDataInfo("ModificationDate",intent.getStringExtra("ModificationDate"));
-        view.setActivityDataInfo("Owner",intent.getStringExtra("Owner"));
-        view.setActivityDataInfo("SerialNumber",intent.getStringExtra("SerialNumber"));
-        view.setActivityDataInfo("Barcode",intent.getStringExtra("Barcode"));
-        view.setActivityDataInfo("Location",intent.getStringExtra("Location"));
-        view.setActivityDataInfo("State",intent.getStringExtra("State"));
-        view.setActivityDataInfo("GuaranteeExpiration",intent.getStringExtra("GuaranteeExpiration"));
-        view.setActivityDataInfo("AccountingInventoryCode",intent.getStringExtra("AccountingInventoryCode"));
-        view.setActivityDataInfo("Comments",intent.getStringExtra("Comments"));
-        view.setActivityDataInfo("Office",intent.getStringExtra("Office"));
+        view.setActivityDataInfo("Owner",           intent.getStringExtra("Owner"));
+        view.setActivityDataInfo("SerialNumber",    intent.getStringExtra("SerialNumber"));
+        view.setActivityDataInfo("Barcode",         intent.getStringExtra("Barcode"));
+        view.setActivityDataInfo("Location",        intent.getStringExtra("Location"));
+        view.setActivityDataInfo("State",           intent.getStringExtra("State"));
+        view.setActivityDataInfo("GuaranteeExpiration",     intent.getStringExtra("GuaranteeExpiration"));
+        view.setActivityDataInfo("AccountingInventoryCode", intent.getStringExtra("AccountingInventoryCode"));
+        view.setActivityDataInfo("Comments",                intent.getStringExtra("Comments"));
+        view.setActivityDataInfo("Office",                  intent.getStringExtra("Office"));
     }
 }
