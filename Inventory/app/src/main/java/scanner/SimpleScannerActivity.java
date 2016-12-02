@@ -15,6 +15,11 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
     private ZXingScannerView mScannerView;
     private static String LOG = "SimpleScannerActivity";
 
+    /**
+     * @Function: onCreate
+     * @Description:
+     * @params:
+     */
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
@@ -26,6 +31,11 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
         contentFrame.addView(mScannerView);
     }
 
+    /**
+     * @Function: onResume
+     * @Description:
+     * @params:
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -33,18 +43,28 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
         mScannerView.startCamera();          // Start camera on resume
     }
 
+    /**
+     * @Function: onPause
+     * @Description:
+     * @params:
+     */
     @Override
     public void onPause() {
         super.onPause();
         mScannerView.stopCamera();           // Stop camera on pause
     }
 
+    /**
+     * @Function:  handleResult
+     * @Description:
+     * @params: rawResult - Result
+     */
     @Override
-    public void handleResult(Result rawResult) {
+    public void handleResult(Result rawResult)
+    {
         // Do something with the result here
-        Log.v(LOG, rawResult.getText()); // Prints scan results
-        Log.v(LOG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
-
+        Log.v(LOG, rawResult.getText());                        // Prints scan results
+        Log.v(LOG, rawResult.getBarcodeFormat().toString());    // Prints the scan format (qrcode, pdf417 etc.)
         // If you would like to resume scanning, call this method below:
         mScannerView.resumeCameraPreview(this);
     }

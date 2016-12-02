@@ -21,7 +21,15 @@ public class MessageDialogFragment extends DialogFragment {
         setRetainInstance(true);
     }
 
-    public static MessageDialogFragment newInstance(String title, String message, MessageDialogListener listener) {
+    /**
+     * @Function: MessageDialogFragment
+     * @Description:
+     * @params: title - String
+     * @params: message - String
+     * @params: listener - MessageDialogListener
+     */
+    public static MessageDialogFragment newInstance(String title, String message, MessageDialogListener listener)
+    {
         MessageDialogFragment fragment = new MessageDialogFragment();
         fragment.mTitle = title;
         fragment.mMessage = message;
@@ -29,6 +37,11 @@ public class MessageDialogFragment extends DialogFragment {
         return fragment;
     }
 
+    /**
+     * @Function: onCreateDialog
+     * @Description:
+     * @params: savedInstanceState - Bundle
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

@@ -2,16 +2,10 @@ package com.inventory.echostar.inventory.search;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import com.inventory.echostar.inventory.search_result.SearchResultActivity;
-
-import java.net.URL;
 import java.util.ArrayList;
-
 import items.ItemsHolder;
-import items.RESTRequests;
-import items.SearchItemFactory.*;
 import rest_api.EquipmentDetection;
 import rest_api.ItemsDetection;
 import rest_api.LocationDetection;

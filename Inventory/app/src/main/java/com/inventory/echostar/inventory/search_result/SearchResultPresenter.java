@@ -67,7 +67,7 @@ public class SearchResultPresenter
     {
         DatabaseItemEmulator database = new DatabaseItemEmulator(view.getThis());
         database.initializeDefaultItemDataBase();
-        database.typeAllDataBaseCredentials();
+        //database.typeAllDataBaseCredentials();
         Log.i(LOG,"F:[setSearchResultList] This is works!");
 
         this.models = database.getAllModelNames();

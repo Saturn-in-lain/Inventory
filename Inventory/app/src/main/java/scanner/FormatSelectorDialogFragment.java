@@ -26,9 +26,17 @@ public class FormatSelectorDialogFragment extends DialogFragment {
         setRetainInstance(true);
     }
 
-    public static FormatSelectorDialogFragment newInstance(FormatSelectorDialogListener listener, ArrayList<Integer> selectedIndices) {
+    /**
+     * @Function: FormatSelectorDialogFragment
+     * @Description: Cre\te and return fragment of FormatSelectorDialogFragment
+     * @params: listener - FormatSelectorDialogListener type
+     * @params: selectedIndices - Integer array
+     */
+    public static FormatSelectorDialogFragment newInstance(FormatSelectorDialogListener listener, ArrayList<Integer> selectedIndices)
+    {
         FormatSelectorDialogFragment fragment = new FormatSelectorDialogFragment();
-        if(selectedIndices == null) {
+        if(selectedIndices == null)
+        {
             selectedIndices = new ArrayList<Integer>();
         }
         fragment.mSelectedIndices = new ArrayList<Integer>(selectedIndices);

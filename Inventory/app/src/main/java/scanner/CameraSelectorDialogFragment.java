@@ -9,28 +9,50 @@ import android.support.v4.app.DialogFragment;
 import com.inventory.echostar.inventory.R;
 
 public class CameraSelectorDialogFragment extends DialogFragment {
-    public interface CameraSelectorDialogListener {
+
+
+    /**
+     * @Interfaqe:
+     * @Description:
+     */
+    public interface CameraSelectorDialogListener
+    {
         public void onCameraSelected(int cameraId);
     }
 
     private int mCameraId;
     private CameraSelectorDialogListener mListener;
 
-    public void onCreate(Bundle state) {
+    public void onCreate(Bundle state)
+    {
         super.onCreate(state);
         setRetainInstance(true);
     }
 
-    public static CameraSelectorDialogFragment newInstance(CameraSelectorDialogListener listener, int cameraId) {
+    /**
+     * @Function: newInstance
+     * @Description:
+     * @params: listener
+     * @params: cameraId
+     */
+    public static CameraSelectorDialogFragment newInstance(CameraSelectorDialogListener listener, int cameraId)
+    {
         CameraSelectorDialogFragment fragment = new CameraSelectorDialogFragment();
         fragment.mCameraId = cameraId;
         fragment.mListener = listener;
         return fragment;
     }
 
+    /**
+     * @Function: onCreateDialog
+     * @Description: Initiate dialog for camera
+     * @params: savedInstanceState
+     */
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        if(mListener == null) {
+    public Dialog onCreateDialog(Bundle savedInstanceState)
+    {
+        if(mListener == null)
+        {
             dismiss();
             return null;
         }
@@ -39,17 +61,22 @@ public class CameraSelectorDialogFragment extends DialogFragment {
         String[] cameraNames = new String[numberOfCameras];
         int checkedIndex = 0;
 
-        for (int i = 0; i < numberOfCameras; i++) {
+        for (int i = 0; i < numberOfCameras; i++)
+        {
             Camera.CameraInfo info = new Camera.CameraInfo();
             Camera.getCameraInfo(i, info);
-            if(info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+            if(info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT)
+            {
                 cameraNames[i] = "Front Facing";
-            } else if(info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
+            } else if(info.facing == Camera.CameraInfo.CAMERA_FACING_BACK)
+            {
                 cameraNames[i] = "Rear Facing";
-            } else {
+            } else
+            {
                 cameraNames[i] = "Camera ID: " + i;
             }
-            if(i == mCameraId) {
+            if(i == mCameraId)
+            {
                 checkedIndex = i;
             }
         }
